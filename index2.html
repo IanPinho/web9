@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Processar Vetor</title>
+</head>
+<body>
+
+<h2>Processar Vetor de Números Inteiros</h2>
+
+<button onclick="lerVetor()">Ler Vetor</button>
+
+<div id="result"></div>
+
+<script>
+    let vetor = [];
+
+    function lerVetor() {
+        vetor = [];
+
+        for (let i = 0; i < 10; i++) {
+            const numero = prompt(`Digite o número na posição ${i + 1}`);
+            vetor.push(parseInt(numero));
+        }
+
+        imprimirVetorInicioFim();
+        imprimirVetorFimInicio();
+    }
+
+    function imprimirVetorInicioFim() {
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerHTML = '<p>Vetor do início para o fim:</p>';
+        resultContainer.innerHTML += '<p>' + vetor.join(', ') + '</p>';
+    }
+
+    function imprimirVetorFimInicio() {
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerHTML += '<p>Vetor do fim para o início:</p>';
+        resultContainer.innerHTML += '<p>' + vetor.reverse().join(', ') + '</p>';
+    }
+</script>
+
+</body>
+</html>
