@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Números Naturais</title>
+</head>
+<body>
+
+<h2>Verificar Números Naturais</h2>
+
+<label for="inputNumber">Digite um número natural:</label>
+<input type="number" id="inputNumber">
+<button onclick="verificarNumero()">Verificar</button>
+
+<div id="result"></div>
+
+<script>
+    function verificarNumero() {
+        const inputNumber = document.getElementById('inputNumber').value;
+
+        if (inputNumber <= 0 || !Number.isInteger(Number(inputNumber))) {
+            alert('Por favor, digite um número natural válido.');
+            return;
+        }
+
+        imprimirImpares(inputNumber);
+        verificarParOuImpar(inputNumber);
+    }
+
+    function imprimirImpares(number) {
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerHTML = '<p>Números naturais ímpares menores ou iguais a ' + number + ':</p>';
+
+        for (let i = 1; i <= number; i += 2) {
+            resultContainer.innerHTML += i + ' ';
+        }
+    }
+
+    function verificarParOuImpar(number) {
+        const resultContainer = document.getElementById('result');
+        const resultado = (number % 2 === 0) ? 'Par' : 'Ímpar';
+
+        resultContainer.innerHTML += '<p>O número ' + number + ' é ' + resultado + '.</p>';
+    }
+</script>
+
+</body>
+</html>
