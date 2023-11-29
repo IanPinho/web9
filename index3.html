@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+    <title>Processar Matriz</title>
+</head>
+<body>
+
+<h2>Processar Matriz de Números Inteiros</h2>
+
+<button onclick="preencherMatriz()">Preencher Matriz</button>
+
+<div id="result"></div>
+
+<script>
+    let matriz = [];
+
+    function preencherMatriz() {
+        matriz = [];
+
+        for (let i = 0; i < 3; i++) {
+            const linha = [];
+            for (let j = 0; j < 3; j++) {
+                const numero = prompt(`Digite o número na posição [${i}][${j}]`);
+                linha.push(parseInt(numero));
+            }
+            matriz.push(linha);
+        }
+
+        imprimirMatriz();
+        imprimirDiagonalPrincipal();
+        imprimirDiagonalSecundaria();
+    }
+
+    function imprimirMatriz() {
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerHTML = '<p>Matriz:</p>';
+
+        for (let i = 0; i < 3; i++) {
+            resultContainer.innerHTML += '<p>' + matriz[i].join(', ') + '</p>';
+        }
+    }
+
+    function imprimirDiagonalPrincipal() {
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerHTML += '<p>Diagonal Principal:</p>';
+
+        for (let i = 0; i < 3; i++) {
+            resultContainer.innerHTML += matriz[i][i] + ' ';
+        }
+    }
+
+    function imprimirDiagonalSecundaria() {
+        const resultContainer = document.getElementById('result');
+        resultContainer.innerHTML += '<p>Diagonal Secundária:</p>';
+
+        for (let i = 0; i < 3; i++) {
+            resultContainer.innerHTML += matriz[i][2 - i] + ' ';
+        }
+    }
+</script>
+
+</body>
+</html>
+
